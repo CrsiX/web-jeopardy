@@ -1,83 +1,137 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>SUSE Jeopardy</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>SUSE Jeopardy</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/main.css">
 
-        <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-    </head>
-    <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-            <h3>SUSE Web Jeopardy</h3>
-        </div>
-      </div>
-    </nav>
-
+    <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
-      <!-- Example row of columns -->
-      <div class="row" id="category-container">
+        <div class="navbar-header">
+            <h2>CyberWeek Web Jeopardy</h2>
+        </div>
+    </div>
+</nav>
+<br/>
+
+<div class="container">
+    <!-- Example row of columns -->
+    <div class="row" id="category-container">
 
         <div class="category hidden">
-          <h2 class="category-heading">Category heading</h2>
-          <p class="category-desc">Category description</p>
-          <button class="btn btn-lg question hidden btn-success" data-toggle="modal" data-target="#question-modal"><b>Label</b></button>
+            <h2 class="category-heading">Category heading</h2>
+            <p class="category-desc">Category description</p>
+            <button class="btn btn-lg question hidden" data-toggle="modal" data-target="#question-modal"><b>Label</b>
+            </button>
         </div>
-
-      </div>
-
-
-    <!-- Frage Modal -->
-    <div class="modal fade" id="question-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" id="question-modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          </div>
-          <div class="modal-body modal-frage">
-            Frage
-          </div>
-          <div class="modal-footer">
-            <button type="button" id="frage-weiter" class="btn btn-success btn-lg" data-toggle="modal" data-target="#answer-modal">Antwort</button>
-          </div>
-        </div>
-      </div>
     </div>
 
+    <!-- Question Modal -->
+    <div class="modal fade" id="question-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" id="question-modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body modal-question">
+                    Question
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="question-next" class="btn btn-success btn-lg" data-toggle="modal"
+                            data-target="#answer-modal">Answer
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <!-- Antwort Modal -->
+    <!-- Answer Modal -->
     <div class="modal fade" id="answer-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" id="answer-modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
                 </div>
-                <div class="modal-body modal-antwort">
-                    Antwort
+                <div class="modal-body modal-answer">
+                    Answer
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-lg btn-success" id="antwort-close">Weiter</button>
+                    <div class="flex-container">
+                        <div class="flex-item btn-group bg-col-blue" role="group" aria-label="...">
+                            <h4>Team Blue</h4>
+                            <br/>
+                            <button type="button" id="points-blue-del" class="btn btn-danger">Wrong</button>
+                            <button type="button" id="points-blue-add" class="btn btn-success">Correct</button>
+                        </div>
+                        <div class="flex-item btn-group bg-col-red" role="group" aria-label="...">
+                            <h4>Team Red</h4>
+                            <br/>
+                            <button type="button" id="points-red-del" class="btn btn-danger">Wrong</button>
+                            <button type="button" id="points-red-add" class="btn btn-success">Correct</button>
+                        </div>
+                        <div class="flex-item btn-group bg-col-green" role="group" aria-label="...">
+                            <h4>Team Green</h4>
+                            <br/>
+                            <button type="button" id="points-green-del" class="btn btn-danger">Wrong</button>
+                            <button type="button" id="points-green-add" class="btn btn-success">Correct</button>
+                        </div>
+                        <div class="flex-item btn-group bg-col-yellow" role="group" aria-label="...">
+                            <h4>Team Yellow</h4>
+                            <br/>
+                            <button type="button" id="points-yellow-del" class="btn btn-danger">Wrong</button>
+                            <button type="button" id="points-yellow-add" class="btn btn-success">Correct</button>
+                        </div>
+                    </div>
+                    <br/>
+                    <hr/>
+                    <button type="button" class="btn btn-lg btn-success" id="answer-close">Close</button>
                 </div>
             </div>
         </div>
     </div>
 
 
-      <hr>
+    <hr>
+    <div class="flex-container scores-container">
 
-      <footer>
-      </footer>
-    </div> <!-- /container -->
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="js/vendor/bootstrap.min.js"></script>
-    <script src="js/jeopardy.js"></script>
-    </body>
+        <div class="flex-item bg-col-blue">
+            <h2 class="category-heading">Team Blue</h2>
+            <h3 id="score-blue">0</h3>
+        </div>
+
+        <div class="flex-item bg-col-red">
+            <h2 class="category-heading">Team Red</h2>
+            <h3 id="score-red">0</h3>
+        </div>
+
+        <div class="flex-item bg-col-green">
+            <h2 class="category-heading">Team Green</h2>
+            <h3 id="score-green">0</h3>
+        </div>
+
+        <div class="flex-item bg-col-yellow">
+            <h2 class="category-heading">Team Yellow</h2>
+            <h3 id="score-yellow">0</h3>
+        </div>
+
+    </div>
+
+    <footer>
+    </footer>
+</div> <!-- /container -->
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="js/vendor/bootstrap.min.js"></script>
+<script src="js/jeopardy.js"></script>
+</body>
 </html>

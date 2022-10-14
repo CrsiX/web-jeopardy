@@ -2,6 +2,32 @@ html {
     overflow-y: scroll;
 }
 
+.bg-col-blue {
+    background-color: #63C5DA;
+}
+
+.bg-col-green {
+    background-color: #98FB98;
+}
+
+.bg-col-red {
+    background-color: #FA8072;
+}
+
+.bg-col-yellow {
+    background-color: #FFDB58;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.flex-item {
+    padding: 10px 30px;
+}
+
 body {
     padding-top: 50px;
     padding-bottom: 20px;
@@ -40,21 +66,21 @@ button.question {
     min-height: 50px;
 }
 
-.modal-frage, .modal-antwort {
+.modal-question, .modal-answer {
     font-size: 30px;
     text-align: center;
     font-weight: bold;
 }
 
-.modal-antwort > h1 {
+.modal-answer > h1 {
     font-weight: bold;
 }
 
-.modal-antwort > img {
+.modal-answer > img {
     margin: 15px;
 }
 
-.modal-frage > pre, .modal-antwort > pre {
+.modal-question > pre, .modal-answer > pre {
     font-size: inherit;
     margin: 30px;
     font-weight: bold;
